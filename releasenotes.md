@@ -38,6 +38,7 @@
 
 ### Fixes
 - Compressed `.c3l` libraries were not unpacked again when only files other than `manifest.json` had changed.
+- `log` and `logf` without a C library (wasm32, freestanding, or `-D C3_MATH`) were off by up to 0.3%: their polynomial coefficients were in the wrong terms, and `log` lacked one.
 - Fixed regression for MacOS loading multiple C3 dylibs. `@finalizer` now correctly works in descending order.
 - Fix miscompilation for OpenBSD on later processors. #3563
 - Polling a GfxEvent for a window and having events on other windows would silently discard the last event.
